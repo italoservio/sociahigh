@@ -1,6 +1,6 @@
 <h1 align="center">Sociahigh </h1>
 <p align="center">
-Sociahigh is a complete application developed using the concept of containerized microservices. This application includes a `node` and `typescript` backend, a `react`, `tailwind` and typescript frontend, `nginx` as an http server and a custom npm package for use in the backend environment.
+Sociahigh is a complete application developed using the concept of containerized microservices. This application includes a <code>node</code> with <code>fastify</code> and <code>typescript</code> backend, a <code>react</code>, <code>tailwind</code> and <code>typescript</code> frontend, <code>nginx</code> as http server and a <code>custom npm package</code> for use in the backend environment. Every microservice and the http server is containerized with <code>docker</code>.
 The purpose of the application is the management of small events, providing the management of guests, the items they are taking to the event and updating everyone about changes.
 </p>
 
