@@ -1,0 +1,24 @@
+{
+  "compilerOptions": {
+    "target": "es2016",
+    "module": "CommonJS",
+    "rootDir": "src",
+    "moduleResolution": "node",
+    "allowJs": false,
+    "declaration": true,
+    "emitDeclarationOnly": false,
+    "outDir": "dist",
+    "removeComments": false,
+    "importsNotUsedAsValues": "remove",
+    "isolatedModules": true,
+    "allowSyntheticDefaultImports": false,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "noImplicitAny": true,
+    "strictFunctionTypes": true,
+    "useUnknownInCatchVariables": true,
+    "skipLibCheck": true,
+    "strictPropertyInitialization": false,
+  }
+}

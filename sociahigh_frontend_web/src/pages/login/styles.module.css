@@ -1,0 +1,10 @@
+.scroll-content {
+  min-height: auto;
+  padding: 0 3px;
+}
+
+@media only screen and (max-height: 530px) {
+  .scroll-content {
+    min-height: calc(100% - (1rem * 2));
+  }
+}

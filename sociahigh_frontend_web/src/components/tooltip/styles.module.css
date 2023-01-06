@@ -1,0 +1,13 @@
+.custom-tooltip {
+  background-color: #000 !important;
+  padding: 2px 5px !important;
+  opacity: 1 !important;
+}
+
+.custom-tooltip::before {
+  background-color: transparent !important;
+}
+
+.custom-tooltip::after {
+  background-color: #000 !important;
+}

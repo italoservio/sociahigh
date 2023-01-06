@@ -1,0 +1,11 @@
+.guest-grid {
+  display: grid;
+  grid-template-columns: 55px 1fr;
+  grid-gap: 0.75rem;
+  align-items: center;
+}
+
+.scroll-content {
+  max-height: calc(50vh);
+  overflow-y: auto;
+}
