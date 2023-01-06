@@ -1,0 +1,1617 @@
+{
+	"info": {
+		"_postman_id": "cdbb3d7b-8d6c-47a2-a88c-cb2479244941",
+		"name": "sociahigh",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "14430517"
+	},
+	"item": [
+		{
+			"name": "users",
+			"item": [
+				{
+					"name": "create",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "content-type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "authorization",
+								"value": "Bearer {{access_token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"first_name\": \"Ítalo\",\n  \"last_name\": \"Carvalho\",\n  \"email\": \"servioitalo@gmail.com\",\n  \"phone\": \"31993444218\",\n  \"password\": \"italo123\"\n}"
+						},
+						"url": {
+							"raw": "{{user_microservice_url}}/api/v1/users",
+							"host": [
+								"{{user_microservice_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"users"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "201",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "authorization",
+										"value": "Bearer {{access_token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"first_name\": \"Ítalo\",\n  \"last_name\": \"Carvalho\",\n  \"email\": \"servioitalo@gmail.com\",\n  \"phone\": \"31993444218\",\n  \"password\": \"italo123\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{user_microservice_url}}/api/v1/users",
+									"host": [
+										"{{user_microservice_url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"users"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": null,
+							"cookie": [],
+							"body": "{\n    \"id\": \"d80d6bb0-4c83-4eb8-8583-cfd9c3baec26\",\n    \"first_name\": \"Ítalo\",\n    \"last_name\": \"Carvalho\",\n    \"email\": \"servioitalo@gmail.com\",\n    \"phone\": \"31993444218\"\n}"
+						}
+					]
+				},
+				{
+					"name": "paginate",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "content-type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "authorization",
+								"value": "Bearer {{access_token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{user_microservice_url}}/api/v1/users?page=1&page_size=10",
+							"host": [
+								"{{user_microservice_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"users"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "page_size",
+									"value": "10"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "authorization",
+										"value": "Bearer {{access_token}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{user_microservice_url}}/api/v1/users?page=1&page_size=10",
+									"host": [
+										"{{user_microservice_url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"users"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "1"
+										},
+										{
+											"key": "page_size",
+											"value": "10"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": null,
+							"cookie": [],
+							"body": "{\n    \"page\": \"1\",\n    \"page_size\": \"10\",\n    \"items\": [\n        {\n            \"id\": \"4eb84c83-d80d-6bb0-8583-cfd9c3baec26\",\n            \"first_name\": \"Ítalo\",\n            \"last_name\": \"Carvalho\",\n            \"email\": \"servioitalo@gmail.com\",\n            \"phone\": \"31993444218\",\n            \"created_at\": \"2022-09-23T03:39:50.000Z\",\n            \"updated_at\": \"2022-09-23T03:39:50.000Z\",\n            \"deleted_at\": null\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "retrieve user by id",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "content-type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "authorization",
+								"value": "Bearer {{access_token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{user_microservice_url}}/api/v1/users/d80d6bb0-4c83-4eb8-8583-cfd9c3baec26",
+							"host": [
+								"{{user_microservice_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"d80d6bb0-4c83-4eb8-8583-cfd9c3baec26"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "content-type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "authorization",
+										"value": "Bearer {{access_token}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{user_microservice_url}}/api/v1/users/d80d6bb0-4c83-4eb8-8583-cfd9c3baec26",
+									"host": [
+										"{{user_microservice_url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"users",
+										"d80d6bb0-4c83-4eb8-8583-cfd9c3baec26"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": null,
+							"cookie": [],
+							"body": "{\n    \"id\": \"9ddfd2c0-ecb1-45f2-aba6-63b5b0b82221\",\n    \"first_name\": \"Ítalo\",\n    \"last_name\": \"Carvalho\",\n    \"email\": \"servioitalo@gmail.com\",\n    \"phone\": \"31993444218\",\n    \"created_at\": \"2022-09-23T03:23:43.000Z\",\n    \"updated_at\": \"2022-09-23T03:23:43.000Z\",\n    \"deleted_at\": null\n}"
+						}
+					]
+				},
+				{
+					"name": "retrieve user by token",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "content-type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "authorization",
+								"value": "Bearer {{access_token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{user_microservice_url}}/api/v1/users/profile",
+							"host": [
+								"{{user_microservice_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"profile"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "content-type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "authorization",
+										"value": "Bearer {{access_token}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{user_microservice_url}}/api/v1/users/profile",
+									"host": [
+										"{{user_microservice_url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"users",
+										"profile"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": null,
+							"cookie": [],
+							"body": "{\n    \"id\": \"d80d6bb0-4c83-4eb8-8583-cfd9c3baec26\",\n    \"first_name\": \"Ítalo\",\n    \"last_name\": \"Carvalho\",\n    \"email\": \"servioitalo@gmail.com\",\n    \"phone\": \"31993444218\",\n    \"created_at\": \"2022-09-23T03:39:50.000Z\",\n    \"updated_at\": \"2022-09-23T03:39:50.000Z\",\n    \"deleted_at\": null\n}"
+						}
+					]
+				},
+				{
+					"name": "retrieve user address paginated",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "content-type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "authorization",
+								"value": "Bearer {{access_token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{user_microservice_url}}/api/v1/users/d80d6bb0-4c83-4eb8-8583-cfd9c3baec26/address?page=1&page_size=10",
+							"host": [
+								"{{user_microservice_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"d80d6bb0-4c83-4eb8-8583-cfd9c3baec26",
+								"address"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "page_size",
+									"value": "10"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "content-type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "authorization",
+										"value": "Bearer {{access_token}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{user_microservice_url}}/api/v1/users/d80d6bb0-4c83-4eb8-8583-cfd9c3baec26/address?page=1&page_size=10",
+									"host": [
+										"{{user_microservice_url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"users",
+										"d80d6bb0-4c83-4eb8-8583-cfd9c3baec26",
+										"address"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "1"
+										},
+										{
+											"key": "page_size",
+											"value": "10"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": null,
+							"cookie": [],
+							"body": "{\n    \"page\": \"1\",\n    \"page_size\": \"10\",\n    \"items\": [\n        {\n            \"id\": \"47600340-2252-a276-b0d5-ad4f48d72b64\",\n            \"user_id\": \"4eb84c83-d80d-6bb0-8583-cfd9c3baec26\",\n            \"zip\": \"30720520\",\n            \"place\": \"Rua Belmiro Braga\",\n            \"number\": \"932\",\n            \"city\": \"Caiçara\",\n            \"state\": \"MG\",\n            \"country\": \"Belo Horizonte\"\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "retrieve address by id",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "Bearer {{access_token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{user_microservice_url}}/api/v1/users/d80d6bb0-4c83-4eb8-8583-cfd9c3baec26/address/2252a276-0340-4760-b0d5-ad4f48d72b64",
+							"host": [
+								"{{user_microservice_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"d80d6bb0-4c83-4eb8-8583-cfd9c3baec26",
+								"address",
+								"2252a276-0340-4760-b0d5-ad4f48d72b64"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "authorization",
+										"value": "Bearer {{access_token}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{user_microservice_url}}/api/v1/users/d80d6bb0-4c83-4eb8-8583-cfd9c3baec26/address/2252a276-0340-4760-b0d5-ad4f48d72b64",
+									"host": [
+										"{{user_microservice_url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"users",
+										"d80d6bb0-4c83-4eb8-8583-cfd9c3baec26",
+										"address",
+										"2252a276-0340-4760-b0d5-ad4f48d72b64"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": null,
+							"cookie": [],
+							"body": "{\n    \"id\": \"47600340-2252-a276-b0d5-ad4f48d72b64\",\n    \"user_id\": \"4eb84c83-d80d-6bb0-8583-cfd9c3baec26\",\n    \"zip\": \"30720520\",\n    \"place\": \"Rua Belmiro Braga\",\n    \"number\": \"932\",\n    \"city\": \"Caiçara\",\n    \"state\": \"MG\",\n    \"country\": \"Belo Horizonte\",\n    \"created_at\": \"2022-09-23T03:41:16.000Z\",\n    \"updated_at\": \"2022-09-23T03:41:16.000Z\"\n}"
+						}
+					]
+				},
+				{
+					"name": "add address",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "content-type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "authorization",
+								"value": "Bearer {{access_token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"zip\": \"30720520\",\n    \"place\": \"Rua Belmiro Braga\",\n    \"number\": \"932\",\n    \"city\": \"Caiçara\",\n    \"state\": \"MG\",\n    \"country\": \"Belo Horizonte\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{user_microservice_url}}/api/v1/users/d80d6bb0-4c83-4eb8-8583-cfd9c3baec26/address",
+							"host": [
+								"{{user_microservice_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"d80d6bb0-4c83-4eb8-8583-cfd9c3baec26",
+								"address"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "201",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "content-type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "authorization",
+										"value": "Bearer {{access_token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"zip\": \"30720520\",\n    \"place\": \"Rua Belmiro Braga\",\n    \"number\": \"932\",\n    \"city\": \"Caiçara\",\n    \"state\": \"MG\",\n    \"country\": \"Belo Horizonte\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{user_microservice_url}}/api/v1/users/d80d6bb0-4c83-4eb8-8583-cfd9c3baec26/address",
+									"host": [
+										"{{user_microservice_url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"users",
+										"d80d6bb0-4c83-4eb8-8583-cfd9c3baec26",
+										"address"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": null,
+							"cookie": [],
+							"body": "{\n    \"id\": \"2252a276-0340-4760-b0d5-ad4f48d72b64\",\n    \"user_id\": \"d80d6bb0-4c83-4eb8-8583-cfd9c3baec26\",\n    \"zip\": \"30720520\",\n    \"place\": \"Rua Belmiro Braga\",\n    \"number\": \"932\",\n    \"city\": \"Caiçara\",\n    \"state\": \"MG\",\n    \"country\": \"Belo Horizonte\"\n}"
+						}
+					]
+				},
+				{
+					"name": "authenticate",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"let res = pm.response.json();",
+									"pm.environment.set(\"access_token\", res.access_token);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"email\": \"servioitalo@gmail.com\",\n  \"password\": \"italo123\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{user_microservice_url}}/api/v1/users/authenticate",
+							"host": [
+								"{{user_microservice_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"authenticate"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\": \"servioitalo@gmail.com\",\n    \"password\": \"italo123\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{user_microservice_url}}/api/v1/users/authenticate",
+									"host": [
+										"{{user_microservice_url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"users",
+										"authenticate"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": null,
+							"cookie": [],
+							"body": "{\n    \"access_token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI5ZGRmZDJjMC1lY2IxLTQ1ZjItYWJhNi02M2I1YjBiODIyMjEiLCJpYXQiOjE2NjM4OTI3NjUsImV4cCI6MTY2Mzg5OTk2NX0.U0JlNSqSdD3Oz5UKwqEq678OvBKVaMnKvCycq0HHqi0\",\n    \"expires_at\": \"2022-09-22T23:26:05.105Z\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "events",
+			"item": [
+				{
+					"name": "event items",
+					"item": [
+						{
+							"name": "add items",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "content-type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "authorization",
+										"value": "Bearer {{access_token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"items\": [\n        {\n            \"name\": \"Alcatra\",\n            \"value\": 74.99\n        }\n    ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{event_microservice_url}}/api/v1/events/c8acaf30-dc0e-488e-bf16-61b20b4536f0/items",
+									"host": [
+										"{{event_microservice_url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"events",
+										"c8acaf30-dc0e-488e-bf16-61b20b4536f0",
+										"items"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "201",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "content-type",
+												"value": "application/json",
+												"type": "text"
+											},
+											{
+												"key": "authorization",
+												"value": "Bearer {{access_token}}",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"items\": [\n        {\n            \"name\": \"Picanha\",\n            \"value\": 83.99\n        }\n    ]\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{event_microservice_url}}/api/v1/events/c8acaf30-dc0e-488e-bf16-61b20b4536f0/items",
+											"host": [
+												"{{event_microservice_url}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"events",
+												"c8acaf30-dc0e-488e-bf16-61b20b4536f0",
+												"items"
+											]
+										}
+									},
+									"status": "Created",
+									"code": 201,
+									"_postman_previewlanguage": "json",
+									"header": null,
+									"cookie": [],
+									"body": "[\n    {\n        \"name\": \"Alcatra\",\n        \"value\": 74.99,\n        \"id\": \"8ea94c29-ecab-41d1-9804-0c5c1e997c1a\",\n        \"event_id\": \"c8acaf30-dc0e-488e-bf16-61b20b4536f0\"\n    }\n]"
+								}
+							]
+						},
+						{
+							"name": "remove item from event",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "content-type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "authorization",
+										"value": "Bearer {{access_token}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{event_microservice_url}}/api/v1/events/c8acaf30-dc0e-488e-bf16-61b20b4536f0/items/8ea94c29-ecab-41d1-9804-0c5c1e997c1a",
+									"host": [
+										"{{event_microservice_url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"events",
+										"c8acaf30-dc0e-488e-bf16-61b20b4536f0",
+										"items",
+										"8ea94c29-ecab-41d1-9804-0c5c1e997c1a"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "update item",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "content-type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "authorization",
+										"value": "Bearer {{access_token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"user_id\": \"d80d6bb0-4c83-4eb8-8583-cfd9c3baec26\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{event_microservice_url}}/api/v1/events/c8acaf30-dc0e-488e-bf16-61b20b4536f0/items/8ea94c29-ecab-41d1-9804-0c5c1e997c1a",
+									"host": [
+										"{{event_microservice_url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"events",
+										"c8acaf30-dc0e-488e-bf16-61b20b4536f0",
+										"items",
+										"8ea94c29-ecab-41d1-9804-0c5c1e997c1a"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "204",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "content-type",
+												"value": "application/json",
+												"type": "text"
+											},
+											{
+												"key": "authorization",
+												"value": "Bearer {{access_token}}",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"user_id\": \"d80d6bb0-4c83-4eb8-8583-cfd9c3baec26\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{event_microservice_url}}/api/v1/events/c8acaf30-dc0e-488e-bf16-61b20b4536f0/items/8ea94c29-ecab-41d1-9804-0c5c1e997c1a",
+											"host": [
+												"{{event_microservice_url}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"events",
+												"c8acaf30-dc0e-488e-bf16-61b20b4536f0",
+												"items",
+												"8ea94c29-ecab-41d1-9804-0c5c1e997c1a"
+											]
+										}
+									},
+									"status": "No Content",
+									"code": 204,
+									"_postman_previewlanguage": null,
+									"header": null,
+									"cookie": [],
+									"body": null
+								}
+							]
+						},
+						{
+							"name": "retrieve event items",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "content-type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "authorization",
+										"value": "Bearer {{access_token}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{event_microservice_url}}/api/v1/events/9b2d1dc8-9947-4c3a-9130-32406dc1cd92/items?page=1&page_size=10&with_user=false",
+									"host": [
+										"{{event_microservice_url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"events",
+										"9b2d1dc8-9947-4c3a-9130-32406dc1cd92",
+										"items"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "1"
+										},
+										{
+											"key": "page_size",
+											"value": "10"
+										},
+										{
+											"key": "with_user",
+											"value": "false"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "200",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "content-type",
+												"value": "application/json",
+												"type": "text"
+											},
+											{
+												"key": "authorization",
+												"value": "Bearer {{access_token}}",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{event_microservice_url}}/api/v1/events/9b2d1dc8-9947-4c3a-9130-32406dc1cd92/items?page=1&page_size=10&with_user=false",
+											"host": [
+												"{{event_microservice_url}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"events",
+												"9b2d1dc8-9947-4c3a-9130-32406dc1cd92",
+												"items"
+											],
+											"query": [
+												{
+													"key": "page",
+													"value": "1"
+												},
+												{
+													"key": "page_size",
+													"value": "10"
+												},
+												{
+													"key": "with_user",
+													"value": "false"
+												}
+											]
+										}
+									},
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json",
+											"name": "Content-Type",
+											"description": "",
+											"type": "text"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"page\": 1,\n  \"page_size\": 10,\n  \"items\": [\n    {\n      \"id\": \"058f49f4-4b11-41b8-abba-efddc102d39c\",\n      \"user_id\": null,\n      \"event_id\": \"9b2d1dc8-9947-4c3a-9130-32406dc1cd92\",\n      \"name\": \"Peito de Frango\",\n      \"value\": \"30\",\n      \"created_at\": \"2022-11-02T16:58:58.000Z\",\n      \"updated_at\": \"2022-11-02T16:58:58.000Z\",\n      \"deleted_at\": null\n    },\n    {\n      \"id\": \"0eed40b5-c367-4299-bba5-84f247dd326f\",\n      \"user_id\": null,\n      \"event_id\": \"9b2d1dc8-9947-4c3a-9130-32406dc1cd92\",\n      \"name\": \"Massa de Tomate\",\n      \"value\": \"8\",\n      \"created_at\": \"2022-11-02T16:58:58.000Z\",\n      \"updated_at\": \"2022-11-02T16:58:58.000Z\",\n      \"deleted_at\": null\n    },\n    {\n      \"id\": \"1ea34336-e7c0-4655-893a-8e6b3868c935\",\n      \"user_id\": null,\n      \"event_id\": \"9b2d1dc8-9947-4c3a-9130-32406dc1cd92\",\n      \"name\": \"Arroz\",\n      \"value\": \"21\",\n      \"created_at\": \"2022-11-02T16:58:58.000Z\",\n      \"updated_at\": \"2022-11-02T16:58:58.000Z\",\n      \"deleted_at\": null\n    },\n    {\n      \"id\": \"752ef539-32eb-48bd-935d-65e296065f0c\",\n      \"user_id\": null,\n      \"event_id\": \"9b2d1dc8-9947-4c3a-9130-32406dc1cd92\",\n      \"name\": \"Fanta 2L\",\n      \"value\": \"7\",\n      \"created_at\": \"2022-11-02T16:58:58.000Z\",\n      \"updated_at\": \"2022-11-02T16:58:58.000Z\",\n      \"deleted_at\": null\n    },\n    {\n      \"id\": \"28e83444-ab60-4bf5-9822-c4a613574c8e\",\n      \"user_id\": null,\n      \"event_id\": \"9b2d1dc8-9947-4c3a-9130-32406dc1cd92\",\n      \"name\": \"Batata Palha\",\n      \"value\": \"4.99\",\n      \"created_at\": \"2022-11-02T16:58:58.000Z\",\n      \"updated_at\": \"2022-11-02T16:58:58.000Z\",\n      \"deleted_at\": null\n    },\n    {\n      \"id\": \"ad3b2391-173f-4c9d-b177-435467c4deac\",\n      \"user_id\": null,\n      \"event_id\": \"9b2d1dc8-9947-4c3a-9130-32406dc1cd92\",\n      \"name\": \"Cola-Cola 2L\",\n      \"value\": \"8\",\n      \"created_at\": \"2022-11-02T16:58:58.000Z\",\n      \"updated_at\": \"2022-11-02T16:58:58.000Z\",\n      \"deleted_at\": null\n    },\n    {\n      \"id\": \"07bfec31-2cfc-4ea0-899e-05098e07d219\",\n      \"user_id\": null,\n      \"event_id\": \"9b2d1dc8-9947-4c3a-9130-32406dc1cd92\",\n      \"name\": \"Suco Tial 1L\",\n      \"value\": \"4\",\n      \"created_at\": \"2022-11-02T16:58:58.000Z\",\n      \"updated_at\": \"2022-11-02T16:58:58.000Z\",\n      \"deleted_at\": null\n    }\n  ]\n}"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "invitations",
+					"item": [
+						{
+							"name": "invite user by email or phone",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "content-type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "authorization",
+										"value": "Bearer {{access_token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"email\": \"brunaavm@hotmail.com\"\n}"
+								},
+								"url": {
+									"raw": "{{event_microservice_url}}/api/v1/events/c8acaf30-dc0e-488e-bf16-61b20b4536f0/invitations",
+									"host": [
+										"{{event_microservice_url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"events",
+										"c8acaf30-dc0e-488e-bf16-61b20b4536f0",
+										"invitations"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "201",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"name": "Content-Type",
+												"value": "application/json",
+												"type": "text"
+											},
+											{
+												"key": "authorization",
+												"value": "Bearer {{access_token}}",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"email\": \"brunaavm@hotmail.com\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{event_microservice_url}}/api/v1/events/c8acaf30-dc0e-488e-bf16-61b20b4536f0/invitations",
+											"host": [
+												"{{event_microservice_url}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"events",
+												"c8acaf30-dc0e-488e-bf16-61b20b4536f0",
+												"invitations"
+											]
+										}
+									},
+									"status": "Created",
+									"code": 201,
+									"_postman_previewlanguage": "json",
+									"header": null,
+									"cookie": [],
+									"body": "{\n  \"event_id\": \"c8acaf30-dc0e-488e-bf16-61b20b4536f0\",\n  \"user_id\": \"8c6a0cd6-31dc-4aee-a45c-1e13f1958bb5\",\n  \"answer\": \"pending\",\n  \"answered_at\": null,\n  \"invited_at\": \"2022-10-11T21:44:31.187Z\",\n  \"id\": \"b73ae301-ffc1-43d7-8f8b-97fbc0935056\"\n}"
+								}
+							]
+						},
+						{
+							"name": "retrieve event invitations",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "content-type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "authorization",
+										"value": "Bearer {{access_token}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{event_microservice_url}}/api/v1/events/c8acaf30-dc0e-488e-bf16-61b20b4536f0/invitations?page=1&page_size=10",
+									"host": [
+										"{{event_microservice_url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"events",
+										"c8acaf30-dc0e-488e-bf16-61b20b4536f0",
+										"invitations"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "1"
+										},
+										{
+											"key": "page_size",
+											"value": "10"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "200",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"name": "Content-Type",
+												"value": "application/json",
+												"type": "text"
+											},
+											{
+												"key": "authorization",
+												"value": "Bearer {{access_token}}",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"email\": \"brunaavm@hotmail.com\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{event_microservice_url}}/api/v1/events/c8acaf30-dc0e-488e-bf16-61b20b4536f0/invitations",
+											"host": [
+												"{{event_microservice_url}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"events",
+												"c8acaf30-dc0e-488e-bf16-61b20b4536f0",
+												"invitations"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": null,
+									"cookie": [],
+									"body": "{\n  \"page\": \"1\",\n  \"page_size\": \"10\",\n  \"items\": [\n    {\n      \"id\": \"b73ae301-ffc1-43d7-8f8b-97fbc0935056\",\n      \"event_id\": \"c8acaf30-dc0e-488e-bf16-61b20b4536f0\",\n      \"answer\": \"pending\",\n      \"answered_at\": null,\n      \"invited_at\": \"2022-10-12T00:44:31.000Z\",\n      \"user\": {\n        \"id\": \"8c6a0cd6-31dc-4aee-a45c-1e13f1958bb5\",\n        \"first_name\": \"Bruna\",\n        \"last_name\": \"Arbex\",\n        \"email\": \"brunaavm@hotmail.com\",\n        \"phone\": \"24981349971\"\n      }\n    }\n  ]\n}"
+								}
+							]
+						},
+						{
+							"name": "retrieve user invitations",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "content-type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "authorization",
+										"value": "Bearer {{access_token}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{event_microservice_url}}/api/v1/events/invitations?page=1&page_size=10",
+									"host": [
+										"{{event_microservice_url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"events",
+										"invitations"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "1"
+										},
+										{
+											"key": "page_size",
+											"value": "10"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "200",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"name": "Content-Type",
+												"value": "application/json",
+												"type": "text"
+											},
+											{
+												"key": "authorization",
+												"value": "Bearer {{access_token}}",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"email\": \"brunaavm@hotmail.com\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{event_microservice_url}}/api/v1/events/c8acaf30-dc0e-488e-bf16-61b20b4536f0/invitations",
+											"host": [
+												"{{event_microservice_url}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"events",
+												"c8acaf30-dc0e-488e-bf16-61b20b4536f0",
+												"invitations"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": null,
+									"cookie": [],
+									"body": "{\n  \"page\": \"1\",\n  \"page_size\": \"10\",\n  \"items\": [\n    {\n      \"id\": \"c8acaf30-dc0e-488e-bf16-61b20b4536f0\",\n      \"user_id\": \"e1660cd9-1229-4f4c-8080-0e06801d76b1\",\n      \"name\": \"Churrasco do Ítalo\",\n      \"description\": \"Um pequeno churrasco para comemorarmos meu aniversário\",\n      \"starts_at\": \"2023-01-12T01:00:00.000Z\",\n      \"created_at\": \"2022-09-30T03:35:19.000Z\",\n      \"updated_at\": \"2022-09-30T03:35:19.000Z\",\n      \"deleted_at\": null,\n      \"address\": {\n        \"id\": \"5ce01815-5f18-40fc-8bb5-e67f648d261f\",\n        \"zip\": \"30720520\",\n        \"place\": \"Rua Belmiro Braga\",\n        \"number\": \"932\",\n        \"city\": \"Belo Horizonte\",\n        \"state\": \"MG\",\n        \"country\": \"Brazil\"\n      },\n      \"invitation\": {\n        \"id\": \"b73ae301-ffc1-43d7-8f8b-97fbc0935056\",\n        \"user_id\": \"8c6a0cd6-31dc-4aee-a45c-1e13f1958bb5\",\n        \"answer\": \"pending\",\n        \"answered_at\": null,\n        \"invited_at\": \"2022-10-12T00:44:31.000Z\"\n      }\n    }\n  ]\n}"
+								}
+							]
+						},
+						{
+							"name": "update invitation",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "content-type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "authorization",
+										"value": "Bearer {{access_token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"answer\": \"accepted\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{event_microservice_url}}/api/v1/events/invitations/b73ae301-ffc1-43d7-8f8b-97fbc0935056",
+									"host": [
+										"{{event_microservice_url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"events",
+										"invitations",
+										"b73ae301-ffc1-43d7-8f8b-97fbc0935056"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "200",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "content-type",
+												"value": "application/json",
+												"type": "text"
+											},
+											{
+												"key": "authorization",
+												"value": "Bearer {{access_token}}",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"answer\": \"accepted\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{event_microservice_url}}/api/v1/events/invitations/b73ae301-ffc1-43d7-8f8b-97fbc0935056",
+											"host": [
+												"{{event_microservice_url}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"events",
+												"invitations",
+												"b73ae301-ffc1-43d7-8f8b-97fbc0935056"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": null,
+									"cookie": [],
+									"body": "{\n  \"id\": \"b73ae301-ffc1-43d7-8f8b-97fbc0935056\",\n  \"event_id\": \"c8acaf30-dc0e-488e-bf16-61b20b4536f0\",\n  \"user_id\": \"8c6a0cd6-31dc-4aee-a45c-1e13f1958bb5\",\n  \"answer\": \"accepted\",\n  \"answered_at\": \"2022-10-14T20:59:53.774Z\",\n  \"invited_at\": \"2022-10-12T00:44:31.000Z\"\n}"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "create",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "content-type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "authorization",
+								"value": "Bearer {{access_token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Churrasco do Ítalo\",\n  \"description\": \"Um pequeno churrasco para comemorarmos meu aniversário\",\n  \"starts_at\": \"2023-01-11T22:00:00.000Z\",\n  \"address\": {\n    \"zip\": \"30720520\",\n    \"place\": \"Rua Belmiro Braga\",\n    \"number\": \"932\",\n    \"city\": \"Belo Horizonte\",\n    \"state\": \"MG\",\n    \"country\": \"Brazil\"\n  }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{event_microservice_url}}/api/v1/events",
+							"host": [
+								"{{event_microservice_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"events"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "201",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "content-type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "authorization",
+										"value": "Bearer {{access_token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"name\": \"Churrasco do Ítalo\",\n  \"description\": \"Um pequeno churrasco para comemorarmos meu aniversário\",\n  \"starts_at\": \"2023-01-11T22:00:00.000Z\",\n  \"address\": {\n    \"zip\": \"30720520\",\n    \"place\": \"Rua Belmiro Braga\",\n    \"number\": \"932\",\n    \"city\": \"Belo Horizonte\",\n    \"state\": \"MG\",\n    \"country\": \"Brazil\"\n  }\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{event_microservice_url}}/api/v1/events",
+									"host": [
+										"{{event_microservice_url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"events"
+									]
+								}
+							},
+							"_postman_previewlanguage": "json",
+							"header": null,
+							"cookie": [],
+							"body": "{\n    \"name\": \"Churrasco do Ítalo\",\n    \"description\": \"Um pequeno churrasco para comemorarmos meu aniversário\",\n    \"starts_at\": \"2023-01-11T22:00:00.000Z\",\n    \"id\": \"9a11adc2-1525-4c03-a0cc-9fd5b4b77b99\",\n    \"user_id\": \"e1660cd9-1229-4f4c-8080-0e06801d76b1\",\n    \"address\": {\n        \"zip\": \"30720520\",\n        \"place\": \"Rua Belmiro Braga\",\n        \"number\": \"932\",\n        \"city\": \"Belo Horizonte\",\n        \"state\": \"MG\",\n        \"country\": \"Brazil\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "update",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "content-type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "authorization",
+								"value": "Bearer {{access_token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Aniversário da Bruninha\",\n  \"description\": \"É isso pessoal, já estou adiantando as coisas pro almoço em Abril pq eu sou dessas\",\n  \"starts_at\": \"2023-04-18T11:00:00.000Z\"\n}"
+						},
+						"url": {
+							"raw": "{{event_microservice_url}}/api/v1/events/77800964-252e-4050-97ca-b6bb0bfb4624",
+							"host": [
+								"{{event_microservice_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"events",
+								"77800964-252e-4050-97ca-b6bb0bfb4624"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "retrieve event by id",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "content-type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "authorization",
+								"value": "Bearer {{access_token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{event_microservice_url}}/api/v1/events/c8acaf30-dc0e-488e-bf16-61b20b4536f0",
+							"host": [
+								"{{event_microservice_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"events",
+								"c8acaf30-dc0e-488e-bf16-61b20b4536f0"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "retrieve event by id",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "content-type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "authorization",
+										"value": "Bearer {{access_token}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{event_microservice_url}}/api/v1/events/c8acaf30-dc0e-488e-bf16-61b20b4536f0",
+									"host": [
+										"{{event_microservice_url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"events",
+										"c8acaf30-dc0e-488e-bf16-61b20b4536f0"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": null,
+							"cookie": [],
+							"body": "{\n    \"id\": \"c8acaf30-dc0e-488e-bf16-61b20b4536f0\",\n    \"user_id\": \"e1660cd9-1229-4f4c-8080-0e06801d76b1\",\n    \"name\": \"Churrasco do Ítalo\",\n    \"description\": \"Um pequeno churrasco para comemorarmos meu aniversário\",\n    \"starts_at\": \"2023-01-12T01:00:00.000Z\",\n    \"created_at\": \"2022-09-30T03:35:19.000Z\",\n    \"updated_at\": \"2022-09-30T03:35:19.000Z\",\n    \"deleted_at\": null,\n    \"address\": {\n        \"id\": \"5ce01815-5f18-40fc-8bb5-e67f648d261f\",\n        \"zip\": \"30720520\",\n        \"place\": \"Rua Belmiro Braga\",\n        \"number\": \"932\",\n        \"city\": \"Belo Horizonte\",\n        \"state\": \"MG\",\n        \"country\": \"Brazil\"\n    },\n    \"items\": [\n        {\n            \"id\": \"8ea94c29-ecab-41d1-9804-0c5c1e997c1a\",\n            \"user_id\": null,\n            \"event_id\": \"c8acaf30-dc0e-488e-bf16-61b20b4536f0\",\n            \"name\": \"Alcatra\",\n            \"value\": \"74.99\",\n            \"created_at\": \"2022-09-30T04:44:48.000Z\",\n            \"updated_at\": \"2022-09-30T04:44:48.000Z\",\n            \"deleted_at\": null\n        },\n        {\n            \"id\": \"85b57e78-5c12-4b12-94cd-6b9e2759c33a\",\n            \"user_id\": null,\n            \"event_id\": \"c8acaf30-dc0e-488e-bf16-61b20b4536f0\",\n            \"name\": \"Picanha\",\n            \"value\": \"83.99\",\n            \"created_at\": \"2022-09-30T03:36:42.000Z\",\n            \"updated_at\": \"2022-09-30T03:36:42.000Z\",\n            \"deleted_at\": null\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "retrieve event paginated",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "content-type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "authorization",
+								"value": "Bearer {{access_token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{event_microservice_url}}/api/v1/events?page=1&page_size=10",
+							"host": [
+								"{{event_microservice_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"events"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "page_size",
+									"value": "10"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "content-type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "authorization",
+										"value": "Bearer {{access_token}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{event_microservice_url}}/api/v1/events?page=1&page_size=10",
+									"host": [
+										"{{event_microservice_url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"events"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "1"
+										},
+										{
+											"key": "page_size",
+											"value": "10"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": null,
+							"cookie": [],
+							"body": "{\n  \"page\": 1,\n  \"page_size\": 10,\n  \"items\": [\n    {\n      \"id\": \"c8acaf30-dc0e-488e-bf16-61b20b4536f0\",\n      \"user_id\": \"e1660cd9-1229-4f4c-8080-0e06801d76b1\",\n      \"name\": \"Churrasco do Ítalo\",\n      \"description\": \"Um pequeno churrasco para comemorarmos meu aniversário\",\n      \"starts_at\": \"2023-01-12T01:00:00.000Z\",\n      \"created_at\": \"2022-09-30T03:35:19.000Z\",\n      \"updated_at\": \"2022-09-30T03:35:19.000Z\",\n      \"deleted_at\": null,\n      \"address\": {\n        \"id\": \"5ce01815-5f18-40fc-8bb5-e67f648d261f\",\n        \"zip\": \"30720520\",\n        \"place\": \"Rua Belmiro Braga\",\n        \"number\": \"932\",\n        \"city\": \"Belo Horizonte\",\n        \"state\": \"MG\",\n        \"country\": \"Brazil\"\n      },\n      \"items_with_user_amount\": 0,\n      \"items_total_amount\": 158.98,\n      \"accepted_invitations_count\": 2,\n      \"total_invitations_count\": 2\n    }\n  ]\n}"
+						}
+					]
+				},
+				{
+					"name": "remove event",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "content-type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "authorization",
+								"value": "Bearer {{access_token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{event_microservice_url}}/api/v1/events/c8acaf30-dc0e-488e-bf16-61b20b4536f0",
+							"host": [
+								"{{event_microservice_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"events",
+								"c8acaf30-dc0e-488e-bf16-61b20b4536f0"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
